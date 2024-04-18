@@ -4,6 +4,3 @@ class Node:
         self.previous = None
         self.next = None
         self.helper = "No help available"
-
-# x = Node()
-# print(x.helper)
