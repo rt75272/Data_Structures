@@ -44,6 +44,38 @@ class LinkedList:
             return
         else:
             self.head = self.head.next 
+
+    def remove_last_node(self):
+        # Check for empty list
+        if(self.head == None):
+            return
+        
+        current_node = self.head
+        while(current_node.next.next):
+            current_node = current_node.next
+        current_node.next = None
+    
+    def remove_at_index(self, index):
+        # Check for empty list
+        if(self.head == None):
+            return
+        
+        current_node = self.head
+        position = 0 
+        
+        # Check for first node.
+        if(position == index):
+            self.remove_first_node()
+        else:
+            # Shifting to index node.
+            while(current_node != None and position+1 != index):
+                position+=1
+                current_node = current_node.next
+            # Remove pointer to index node.
+            if(current_node != None):
+                current_node.next = current_node.next.next
+            else:
+                print("Index not found")
         
     def get_size(self):
         size = 0 
@@ -70,6 +102,8 @@ if __name__ == "__main__":
     x.insert_at_start(1)
     x.insert_at_index(42, 2)
     x.insert_at_end(100)
+    x.remove_at_index(1)
+    x.remove_last_node()
     n = x.get_size()
     print(n)
     x.print_list()

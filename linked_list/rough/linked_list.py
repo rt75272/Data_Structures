@@ -45,6 +45,35 @@ class LinkedList:
             return
         else:
             self.head = self.head.next
+    
+    def remove_last_node(self):
+        # Check for empty list
+        if(self.head == None):
+            return
+        
+        current_node = self.head
+        while(current_node.next.next):
+            current_node = current_node.next
+        current_node.next = None
+
+    # Method to remove at given index
+    def remove_at_index(self, index):
+            if self.head == None:
+                return
+
+            current_node = self.head
+            position = 0
+            if position == index:
+                self.remove_first_node()
+            else:
+                while(current_node != None and position+1 != index):
+                    position = position+1
+                    current_node = current_node.next
+
+                if current_node != None:
+                    current_node.next = current_node.next.next
+                else:
+                    print("Index not present")
 
     def get_size(self):
         size = 0 
